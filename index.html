@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/spectro.css">
     <script type="module" src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
+    <!-- <script src="/Phaunus/ml.js"></script> -->
     <title>Phaunus</title>
     </head>
     <body>
@@ -42,8 +45,9 @@
                 </div>
                 <div class="lower">
                     <ul class="options ">
-                        <li class="start"><a style="border: 20px 20px; padding: 10px; margin:10px;" id="start" onclick="init()" class="link-text" href="#">START</a></li>
-                        <li><a href="" target="_blank"><img src="./images/video camera.png" alt="camera"></a></li>
+                        <li class="start"><a style="border: 20px 20px; padding: 10px; margin:10px;" id="start" onclick="init(); initML();" class="link-text" href="#">START</a></li>
+                        <li><a href="" target="_blank"><img src="/images/video camera.png" alt="camera"></a></li>
+                        <button type="button" onclick="initML()">Start</button>
                         <li class="end"><a class="link-text" href="#">END</a></li>
                     </ul>
                 </div>
@@ -51,6 +55,7 @@
         </section>
 
         <!-----------FOOTER----------------->
+        <div id="label-container"></div>
         <section class="bottom">
             <div class="bottom-wrapper">
                 <table class="table">
@@ -136,9 +141,63 @@
 
 </script>
 <script>
-    container = document.getElementById('Spectrogram');
-    renderer.setSize($(container).width(), $(container).height());
-    container.appendChild(renderer.domElement);
+    function all() {
+        init();
+        initML();
+    }
 </script>
-    </body>
+
+<script type="text/javascript">
+    // more documentation available at
+    // https://github.com/tensorflow/tfjs-models/tree/master/speech-commands
+
+    // the link to your model provided by Teachable Machine export panel
+    const URL = "https://teachablemachine.withgoogle.com/models/Pz5hmeajb/";
+
+    async function createModel() {
+        const checkpointURL = URL + "model.json"; // model topology
+        const metadataURL = URL + "metadata.json"; // model metadata
+
+        const recognizer = speechCommands.create(
+            "BROWSER_FFT", // fourier transform type, not useful to change
+            undefined, // speech commands vocabulary feature, not useful for your models
+            checkpointURL,
+            metadataURL);
+
+        // check that model and metadata are loaded via HTTPS requests.
+        await recognizer.ensureModelLoaded();
+
+        return recognizer;
+    }
+
+    async function initML() {
+        const recognizer = await createModel();
+        const classLabels = recognizer.wordLabels(); // get class labels
+        const labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < classLabels.length; i++) {
+            labelContainer.appendChild(document.createElement("div"));
+        }
+
+        // listen() takes two arguments:
+        // 1. A callback function that is invoked anytime a word is recognized.
+        // 2. A configuration object with adjustable fields
+        recognizer.listen(result => {
+            const scores = result.scores; // probability of prediction for each class
+            // render the probability scores per class
+            for (let i = 0; i < classLabels.length; i++) {
+                const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
+                labelContainer.childNodes[i].innerHTML = classPrediction;
+            }
+        }, {
+            includeSpectrogram: true, // in case listen should return result.spectrogram
+            probabilityThreshold: 0.75,
+            invokeCallbackOnNoiseAndUnknown: true,
+            overlapFactor: 0.50 // probably want between 0.5 and 0.75. More info in README
+        });
+
+    }
+</script>
+
+
+</body>
 </html>

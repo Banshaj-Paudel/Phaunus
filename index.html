@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/spectro.css">
+    <script type="module" src="script.js"></script>
     <title>Phaunus</title>
     </head>
     <body>
@@ -35,14 +37,14 @@
         <!-----------BODY----------------->
         <section class="middle">
             <div class="center-main">
+                <div id ="Spectrogram" style="width:457px; height: 275px;"></div>
                 <div class="button-section">
-                    <div class="upper"></div>
                 </div>
                 <div class="lower">
                     <ul class="options ">
-                        <li class="start"><a class="link-text" href="default.asp">START</a></li>
+                        <li class="start"><a style="border: 20px 20px; padding: 10px; margin:10px;" id="start" onclick="init()" class="link-text" href="#">START</a></li>
                         <li><a href="" target="_blank"><img src="./images/video camera.png" alt="camera"></a></li>
-                        <li class="end"><a class="link-text" href="news.asp">END</a></li>
+                        <li class="end"><a class="link-text" href="#">END</a></li>
                     </ul>
                 </div>
             </div>
@@ -108,5 +110,35 @@
             </div>
         </section>
     </main>
+    <script type="x-shader/x-vertex" id="vertexshader">
+        attribute float displacement;
+        uniform vec3 vLut[256];
+        varying vec3 vColor;
+
+        void main()
+        {
+
+            int index = int(displacement);
+            vColor = vLut[index];
+            vec3 newPosition = position + normal*displacement/25.5;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition,1.0);
+        }
+
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentshader">
+    varying vec3 vColor;
+
+            void main()
+            {
+                gl_FragColor 	= vec4(vColor,1.0);
+            }
+
+</script>
+<script>
+    container = document.getElementById('Spectrogram');
+    renderer.setSize($(container).width(), $(container).height());
+    container.appendChild(renderer.domElement);
+</script>
     </body>
 </html>

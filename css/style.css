@@ -24,6 +24,29 @@ a{
 
 /* --------------------------------HEADER--------------------------------------- */
 
+.btn {
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 10px;
+  background: #19afff;
+  padding: 4.1px 12px;
+  text-decoration: none;
+  border: 1px;
+}
+.btn:hover {
+  background: #756c09;
+  text-decoration: none;
+}
+
+#label-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+  color: #1bf035;
+}
+
 .logo{
   position: absolute;
   top: 1px;

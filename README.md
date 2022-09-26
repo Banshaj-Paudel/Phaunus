@@ -14,7 +14,7 @@ Phaunus  is a forest monitoring system that uses a combination of  audio and mac
 1. Clone the repo.
 2. Open it in VS Code.
 3. Run using live server.
-4. [Link](https://bhairutribrid.github.io/Phaunus/)
+4. [Website](https://bhairutribrid.github.io/Phaunus/)
 
 ## Credits
 - [Google Teachable Machine](https://teachablemachine.withgoogle.com/)

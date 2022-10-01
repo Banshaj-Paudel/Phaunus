@@ -2,11 +2,9 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-
-main{
+main {
   background-color: #586188;
 }
-
 
 .main-link {
   text-decoration: none;
@@ -16,11 +14,9 @@ main{
   max-width: 100%;
 }
 
-
-a{
+a {
   text-decoration: none;
 }
-
 
 /* --------------------------------HEADER--------------------------------------- */
 
@@ -47,18 +43,17 @@ a{
   color: #1bf035;
 }
 
-.logo{
+.logo {
   position: absolute;
   top: 1px;
 }
-
 
 .header {
   height: 20px;
   padding: 32px 40px;
   display: flex;
   justify-content: space-between;
-  background-color: #D2DAFF;
+  background-color: #d2daff;
 }
 .header .right-info {
   width: 476px;
@@ -66,7 +61,6 @@ a{
   display: flex;
   align-items: flex-start;
 }
-
 
 .right-info ul {
   width: 374px;
@@ -86,7 +80,6 @@ a{
   font-weight: 600;
 }
 
-
 /* --------------------------------BODY--------------------------------------- */
 
 .middle {
@@ -96,60 +89,54 @@ a{
 }
 .middle .center-main {
   width: 434px;
-  height: auto;   ;
+  height: auto;
   margin: 20px auto 0 auto;
 }
 
-
-.center-main .upper{
+.center-main .upper {
   height: 12em;
   width: 100%;
   background-color: white;
   margin-bottom: 20px;
 }
-.center-main .lower{
+.center-main .lower {
   height: 49px;
   width: 255px;
-  background-color: #D2DAFF;
+  background-color: #d2daff;
   margin: auto;
 }
 
-
-.options{
+.options {
   height: 100%;
   font-size: 7px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-
 }
 
-
-.start{
+.start {
   width: 35px;
   height: 16px;
-  background-color: #7FB77E;
+  background-color: #7fb77e;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
   border-radius: 11px;
 }
-.start:hover{
-  background-color: #3D8361;
+.start:hover {
+  background-color: #3d8361;
 }
 
-
-.end{
+.end {
   width: 35px;
   height: 16px;
-  background-color: #EF3D25;
+  background-color: #ef3d25;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
   border-radius: 11px;
 }
 .end:hover {
-  background-color: #C21010;
+  background-color: #c21010;
 }
 
-
-.link-text{
+.link-text {
   width: auto;
   height: 100%;
   font-weight: 500;
@@ -158,9 +145,8 @@ a{
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #FAF0CE; 
+  color: #faf0ce;
 }
-
 
 /* --------------------------------FOOTER--------------------------------------- */
 
@@ -173,8 +159,7 @@ a{
   margin: 20px auto 0 auto;
 }
 
-
-th{
+th {
   padding: 6px;
 }
 td {
@@ -182,12 +167,13 @@ td {
   text-align: center;
 }
 
-
 table {
   height: 100%;
   width: 100%;
 }
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
   border-collapse: collapse;
 }

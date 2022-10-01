@@ -410,18 +410,14 @@ document.getElementById("start").addEventListener("click", function () {
     }
 
     function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      console.log(window.innerHeight);
+      console.log(window.innerWidth);
 
-    	camera.aspect = window.innerWidth / window.innerHeight;
-    					console.log(window.innerHeight);
-    					console.log(window.innerWidth);
+      camera.updateProjectionMatrix();
 
-    	camera.updateProjectionMatrix();
-
-    	renderer.setSize( window.innerWidth, window.innerHeight );
-
+      renderer.setSize(window.innerWidth, window.innerHeight);
     }
-
-    
 
     function animate() {
       requestId = requestAnimationFrame(animate);
@@ -445,7 +441,5 @@ document.getElementById("start").addEventListener("click", function () {
         new THREE.Uint8BufferAttribute(heights, 1)
       );
     }
-
-
-}
+  }
 });

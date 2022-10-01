@@ -1,10 +1,10 @@
 * {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 canvas {
-    width: 457px;
-    height: 275px;
+  width: 457px;
+  height: 275px;
 }

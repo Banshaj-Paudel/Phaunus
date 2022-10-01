@@ -1,203 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
-    integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/spectro.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/spectro.css" />
     <script type="module" src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.4.0/dist/speech-commands.min.js"></script>
     <!-- <script src="/Phaunus/ml.js"></script> -->
     <title>Phaunus</title>
-    </head>
-    <body>
+  </head>
+  <body>
     <main class="main-wrapper">
-        
-        <!-----------HEADER----------------->
-        <header class="header">
-            <div class="main-logo">
-                <img class="logo" src="./images/brand-logo.png" alt="Logo" />
+      <!-----------HEADER----------------->
+      <header class="header">
+        <div class="main-logo">
+          <img class="logo" src="./images/brand-logo.png" alt="Logo" />
         </div>
         <nav class="right-info">
-            <ul class="nav-list">
-                <li class="nav-item active"><a  class = "main-link" href="#">AVATAR</a></li>
-            </ul>
-            <div class="main-logo">
-                <img class="logo" src="./images/brand-logo.png" alt="Logo" />
-            </div>
+          <ul class="nav-list">
+            <li class="nav-item active">
+              <a class="main-link" href="#">AVATAR</a>
+            </li>
+          </ul>
+          <div class="main-logo">
+            <img class="logo" src="./images/brand-logo.png" alt="Logo" />
+          </div>
         </nav>
-        </header>
-        
-        <!-----------BODY----------------->
-        <section class="middle">
-            <div class="center-main">
-                <div id ="Spectrogram" style="width:457px; height: 275px;"></div>
-                <div class="button-section">
-                </div>
-                <div class="lower">
-                    <ul class="options ">
-                        <button class="btn" type="button" onclick="initML()">Start</button>
-                        <li class="start" onclick="init()"><a style="border: 20px 20px; padding: 10px; margin:10px;" id="start" class="link-text" href="#">START</a></li>
-                        <li><a href="" target="_blank"><img src="./images/video camera.png" alt="camera"></a></li>
-                        <li class="end"><a class="link-text" href="#"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+      </header>
 
-        <!-----------FOOTER----------------->
-        <div id="label-container"></div>
-        <section class="bottom">
-            <div class="bottom-wrapper">
-                <table class="table">
-                    <thead>
-                        <tr>
-                        <th scope="col">DEVICES</th>
-                        <th scope="col">SECTOR</th>
-                        <th scope="col">BATTERY (%)</th>
-                        <th scope="col">STATUS</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>A55</td>
-                        <td>65</td>
-                        <td>online</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>B14</td>
-                        <td>77</td>
-                        <td>offline</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td>Y77</td>
-                        <td>32</td>
-                        <td>online</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">4</th>
-                        <td>R12</td>
-                        <td>12</td>
-                        <td>online</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">5</th>
-                        <td>T45</td>
-                        <td>89</td>
-                        <td>online</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">6</th>
-                        <td>E34</td>
-                        <td>23</td>
-                        <td>offline</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">7</th>
-                        <td>P98</td>
-                        <td>43</td>
-                        <td>offline</td>
-                        </tr>
-                    </tbody>
-                    </table>
-            </div>
-        </section>
+      <!-----------BODY----------------->
+      <section class="middle">
+        <div class="center-main">
+          <div id="Spectrogram" style="width: 457px; height: 275px"></div>
+          <div class="button-section"></div>
+          <div class="lower">
+            <ul class="options">
+              <button class="btn" type="button" onclick="initML()">
+                Start
+              </button>
+              <li class="start" onclick="init()">
+                <a
+                  style="border: 20px 20px; padding: 10px; margin: 10px"
+                  id="start"
+                  class="link-text"
+                  href="#"
+                  >START</a
+                >
+              </li>
+              <li>
+                <a href="" target="_blank"
+                  ><img src="./images/video camera.png" alt="camera"
+                /></a>
+              </li>
+              <li class="end"><a class="link-text" href="#"></a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-----------FOOTER----------------->
+      <div id="label-container"></div>
+      <section class="bottom">
+        <div class="bottom-wrapper">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">DEVICES</th>
+                <th scope="col">SECTOR</th>
+                <th scope="col">BATTERY (%)</th>
+                <th scope="col">STATUS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>A55</td>
+                <td>65</td>
+                <td>online</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>B14</td>
+                <td>77</td>
+                <td>offline</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Y77</td>
+                <td>32</td>
+                <td>online</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>R12</td>
+                <td>12</td>
+                <td>online</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>T45</td>
+                <td>89</td>
+                <td>online</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>E34</td>
+                <td>23</td>
+                <td>offline</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>P98</td>
+                <td>43</td>
+                <td>offline</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
     <script type="x-shader/x-vertex" id="vertexshader">
-        attribute float displacement;
-        uniform vec3 vLut[256];
-        varying vec3 vColor;
+      attribute float displacement;
+      uniform vec3 vLut[256];
+      varying vec3 vColor;
 
-        void main()
-        {
+      void main()
+      {
 
-            int index = int(displacement);
-            vColor = vLut[index];
-            vec3 newPosition = position + normal*displacement/25.5;
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition,1.0);
-        }
+          int index = int(displacement);
+          vColor = vLut[index];
+          vec3 newPosition = position + normal*displacement/25.5;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition,1.0);
+      }
+    </script>
 
-</script>
+    <script type="x-shader/x-fragment" id="fragmentshader">
+      varying vec3 vColor;
 
-<script type="x-shader/x-fragment" id="fragmentshader">
-    varying vec3 vColor;
-
-            void main()
-            {
-                gl_FragColor 	= vec4(vColor,1.0);
-            }
-
-</script>
-<script>
-    function all() {
+              void main()
+              {
+                  gl_FragColor 	= vec4(vColor,1.0);
+              }
+    </script>
+    <script>
+      function all() {
         init();
         initML();
-    }
-</script>
+      }
+    </script>
 
-<script type="text/javascript">
-    // more documentation available at
-    // https://github.com/tensorflow/tfjs-models/tree/master/speech-commands
+    <script type="text/javascript">
+      // more documentation available at
+      // https://github.com/tensorflow/tfjs-models/tree/master/speech-commands
 
-    // the link to your model provided by Teachable Machine export panel
-    const URL = "https://teachablemachine.withgoogle.com/models/Pz5hmeajb/";
+      // the link to your model provided by Teachable Machine export panel
+      const URL = "https://teachablemachine.withgoogle.com/models/Pz5hmeajb/";
 
-    async function createModel() {
+      async function createModel() {
         const checkpointURL = URL + "model.json"; // model topology
         const metadataURL = URL + "metadata.json"; // model metadata
 
         const recognizer = speechCommands.create(
-            "BROWSER_FFT", // fourier transform type, not useful to change
-            undefined, // speech commands vocabulary feature, not useful for your models
-            checkpointURL,
-            metadataURL);
+          "BROWSER_FFT", // fourier transform type, not useful to change
+          undefined, // speech commands vocabulary feature, not useful for your models
+          checkpointURL,
+          metadataURL
+        );
 
         // check that model and metadata are loaded via HTTPS requests.
         await recognizer.ensureModelLoaded();
 
         return recognizer;
-    }
+      }
 
-    async function initML() {
+      async function initML() {
         const recognizer = await createModel();
         const classLabels = recognizer.wordLabels(); // get class labels
         const labelContainer = document.getElementById("label-container");
         for (let i = 0; i < classLabels.length; i++) {
-            labelContainer.appendChild(document.createElement("div"));
+          labelContainer.appendChild(document.createElement("div"));
         }
 
         // listen() takes two arguments:
         // 1. A callback function that is invoked anytime a word is recognized.
         // 2. A configuration object with adjustable fields
-        recognizer.listen(result => {
+        recognizer.listen(
+          (result) => {
             const scores = result.scores; // probability of prediction for each class
             // render the probability scores per class
             for (let i = 0; i < classLabels.length; i++) {
-                const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
-                labelContainer.childNodes[i].innerHTML = classPrediction;
+              const classPrediction =
+                classLabels[i] + ": " + result.scores[i].toFixed(2);
+              labelContainer.childNodes[i].innerHTML = classPrediction;
             }
-        }, {
+          },
+          {
             includeSpectrogram: true, // in case listen should return result.spectrogram
             probabilityThreshold: 0.75,
             invokeCallbackOnNoiseAndUnknown: true,
-            overlapFactor: 0.50 // probably want between 0.5 and 0.75. More info in README
-        });
-
-    }
-</script>
-
-
-</body>
+            overlapFactor: 0.5, // probably want between 0.5 and 0.75. More info in README
+          }
+        );
+      }
+    </script>
+  </body>
 </html>

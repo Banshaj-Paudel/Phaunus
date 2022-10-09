@@ -88,7 +88,7 @@ a {
   width: 100%;
 }
 .middle .center-main {
-  width: 434px;
+  width: 100vw;
   height: auto;
   margin: 20px auto 0 auto;
 }
@@ -182,3 +182,4 @@ canvas {
   width: 457px;
   height: 275px;
 }
+

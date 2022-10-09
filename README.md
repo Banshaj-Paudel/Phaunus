@@ -28,3 +28,4 @@ Phaunus is a forest monitoring system that uses a combination of audio and machi
 
 - Banshaj Paudel: [GitHub](https://github.com/BhairuTribrid)
 - Gaurav Pratap Shrestha: [GitHub](https://github.com/gaurav-shrestha)
+- Siddhartha Tiwari : [GitHub](https://github.com/Sidontheway)
